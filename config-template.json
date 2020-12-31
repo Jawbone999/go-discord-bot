@@ -1,0 +1,11 @@
+{
+  "twitchServer": "irc.twitch.tv",
+  "twitchPort": 6667,
+  "twitchToken": "",
+  "twitchChannel": "",
+  "botUsername": "",
+  "botPrefix": "",
+  "logLevel": "info",
+  "logConsole": true,
+  "logFile": ""
+}
