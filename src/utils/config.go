@@ -16,7 +16,7 @@ type BotConfig struct {
 	Username   string `json:"botUsername"`
 	Prefix     string `json:"botPrefix"`
 	LogLevel   string `json:"logLevel"`
-	LogConsole string `json:"logConsole"`
+	LogConsole bool   `json:"logConsole"`
 	LogFile    string `json:"logFile"`
 }
 
