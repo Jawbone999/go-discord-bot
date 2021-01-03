@@ -47,11 +47,11 @@ func SetupLogger(config BotConfig) {
 	}
 
 	if len(config.LogFile) > 0 {
-		// writers = append(writers, zerolog.)
+		// writers = append(writers, ?)
 	}
 
 	multi := io.MultiWriter(writers...)
 	Logger = zerolog.New(multi).Level(lvl).With().Timestamp().Logger()
 
-	Logger.Info().Msg("Logger configured.")
+	Logger.Debug().Msg("Logger configured.")
 }

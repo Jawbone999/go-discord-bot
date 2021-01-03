@@ -1,13 +1,21 @@
 package main
 
-import "github.com/Jawbone999/go-twitch-bot/src/utils"
+import (
+	"github.com/Jawbone999/go-twitch-bot/src/utils"
+)
 
 func main() {
-	configs, err := utils.GetConfig()
+	config, err := utils.GetConfig()
 	if err != nil {
 		utils.HandleError("Failed to read config file", err)
 		return
 	}
-	utils.SetupLogger()
+
+	err = utils.validateConfig(config)
+	if err != nil {
+		utils.HandleError("Failed to validate config file", err)
+	}
+
+	utils.SetupLogger(config)
 
 }

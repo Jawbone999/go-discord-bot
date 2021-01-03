@@ -2,7 +2,9 @@ package utils
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
+	"strings"
 )
 
 const configFile = "config.json"
@@ -31,4 +33,29 @@ func GetConfig() (BotConfig, error) {
 	}
 
 	return config, err
+}
+
+// ValidateConfig validates configuration settings
+func ValidateConfig(config *BotConfig) error {
+	if config.Channel == "" {
+		return errors.New("channel field is empty")
+	}
+
+	if config.Prefix == "" {
+		return errors.New("bot command prefix field is empty")
+	}
+
+	if config.Token == "" {
+		return errors.New("oauth token field is empty")
+	}
+
+	if !strings.HasPrefix(config.Token, "oauth:") {
+		config.Token = "oauth:" + config.Token
+	}
+
+	if config.Username == "" {
+		return errors.New("username field is empty")
+	}
+
+	return nil
 }
